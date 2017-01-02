@@ -144,6 +144,8 @@ std::string quote(const char c)
 		case '\\':
 		case ' ':
 			return std::string{} + "\\" + c;
+		case '\n':
+			return "\\n";
 		default:
 			return std::string{ c };
 	}

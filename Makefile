@@ -48,9 +48,16 @@ clean:
 distclean: clean
 	$(RM) *~
 
+
 valgrind: CPPFLAGS += -DVALGRIND
 valgrind: build
 	valgrind --leak-check=full $(BINARY)
+
+fa2e.html:	CXX=emcc
+fa2e.html:	CPPFLAGS=-std=c++11 -O3 -s USE_SDL=2
+
+fa2e.html:	$(OBJS)
+	emcc -std=c++11 $(OBJS) -s USE_SDL=2 --shell-file shell.html -o fa2e.html
 
 include .depend
 

@@ -203,7 +203,7 @@ void commander::show()
 {
 	std::cout << "----------------------------------------" << std::endl;
 	for (auto i : variables_)
-		std::cout << i.first << "=" << i.second.value() << std::endl;
+		std::cout << i.first << " = " << i.second.value() << std::endl;
 }
 
 std::string commander::toggle(const std::string& name)
