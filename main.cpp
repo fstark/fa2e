@@ -13,8 +13,8 @@
 #endif
 
 #include "cpu_6502.hpp"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 
 sdl_emulator* emulator;
 
@@ -47,13 +47,13 @@ int main(int argc, const char* argv[])
 	std::cerr << "Use Control-Delete to send RESET to the emulator" << std::endl;
 	std::cerr << "Startup commands are in .fa2erc file" << std::endl;
 
-	std::ifstream ifs (".fa2erc", std::ifstream::in);
-	commander::cli.repl( ifs, false );
+	std::ifstream ifs(".fa2erc", std::ifstream::in);
+	commander::cli.repl(ifs, false);
 
 	commander::cli.execute("emulator.run");
 #endif
 
 	SDL_Quit();
-	
+
 	return 0;
 }

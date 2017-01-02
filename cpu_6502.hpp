@@ -1345,7 +1345,7 @@ public:
 		if ((instr_ % 100000) == 0)
 		{
 			//			std::cout << "--------------" << std::endl;
-//			std::cout << cycles_ << "," << instr_ << "," << jmp_ << std::endl;
+			//			std::cout << cycles_ << "," << instr_ << "," << jmp_ << std::endl;
 			//instr_ =
 			jmp_ = 0;
 			//			exit(0);

@@ -5,7 +5,7 @@ LDFLAGS=-g
 LDLIBS=-lSDL2
 
 # Be *extra* careful when adding source files which don't have .cpp extension, as they would be *deleted* by make clean !
-SRCS := a2_disk2.cpp a2_emulator.cpp a2_io_mem.cpp a2_speaker.cpp a2_video.cpp binary_data.cpp clock.cpp commander.cpp core_types.cpp floppy_disk.cpp floppy_drive.cpp main.cpp sdl_emulator.cpp sdl_keyboard.cpp sdl_screen.cpp sdl_speaker.cpp
+SRCS := a2_disk2.cpp a2_emulator.cpp a2_io_mem.cpp a2_video.cpp binary_data.cpp clock.cpp commander.cpp core_types.cpp floppy_disk.cpp floppy_drive.cpp main.cpp sdl_emulator.cpp sdl_keyboard.cpp sdl_screen.cpp sdl_speaker.cpp
 HEADERS := a2_disk2.hpp a2_emulator.hpp a2_io_mem.hpp a2_keyboard.hpp a2_speaker.hpp a2_video.hpp binary_data.hpp bus.hpp chip.hpp clock.hpp commander.hpp core_types.hpp cpu_6502.hpp cpu_emulator.hpp floppy_disk.hpp floppy_drive.hpp sdl_emulator.hpp sdl_keyboard.hpp sdl_screen.hpp sdl_speaker.hpp
 BINARY := ./fa2e
 

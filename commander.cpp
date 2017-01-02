@@ -114,8 +114,9 @@ public:
 			}
 			auto c = *pos_++;
 			if (c == '\\' && !at_end())
-			{	c = *pos_++;
-				if (c=='n')
+			{
+				c = *pos_++;
+				if (c == 'n')
 					c = '\n';
 			}
 			value.push_back(c);
@@ -177,9 +178,9 @@ void commander::repl(std::istream& s, bool prompt)
 		}
 		if (!getline(s, cmd))
 			return;
-//		std::cout << "[" << cmd << "]" << std::endl;
+		//		std::cout << "[" << cmd << "]" << std::endl;
 		auto s = execute(cmd);
-		if (s!="")
+		if (s != "")
 			std::cout << s << std::endl;
 	} while (!finished_);
 }
@@ -247,11 +248,11 @@ const std::string commander::execute(const std::string command)
 	}
 	else
 	{
-		if (name=="")
+		if (name == "")
 			return "";
-		if (name=="#")
+		if (name == "#")
 			return "";
-		
+
 		auto cmd = commands_.find(name);
 		if (cmd == commands_.end())
 		{

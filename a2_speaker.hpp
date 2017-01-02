@@ -21,55 +21,62 @@
 class a2_speaker
 {
 public:
-	static const int SAMPLES = 500;
+	static const int SAMPLE_RATE = 44100;
+
+	static const size_t SAMPLE_SIZE = SAMPLE_RATE / clock::FRAME_RATE;
 
 private:
-	const class clock& clock;
+	const class clock& clock_;
 	byte signal_;
-	int tail_index_;
-	int head_index_;
-	long last_tick_sent_;
+	long start_tick_;
+	size_t last_sample_;
 
-	static const int EVENT_SIZE = 2000;
+	byte samples_[SAMPLE_SIZE];
 
-	long events_[EVENT_SIZE];
-
-	bool empty() const { return tail_index_ == head_index_; }
+	size_t sample_from_tick(long tick) { return ((tick - start_tick_) * SAMPLE_SIZE) / clock::CYCLES_PER_FRAME; }
 
 public:
 	a2_speaker(class clock& clock, const std::string name = "spkr")
-	    : clock(clock)
+	    : clock_(clock)
 	    , signal_(0x00)
-	    , tail_index_(0)
-	    , head_index_(0)
-	    , last_tick_sent_(0)
+	    , start_tick_(0)
+	    , last_sample_(0)
 	{
-		commander::cli.register_variable(name, long_variable("last_sent", last_tick_sent_));
+		//		commander::cli.register_variable(name, long_variable("last_sent", last_tick_sent_));
 	}
 
-	/** Add an event to the rolling queue */
+	/** Add an event */
 	void click()
 	{
-		assert(head_index_ >= 0 && head_index_ < EVENT_SIZE);
+		auto index = sample_from_tick(clock_.get_cycles());
+		if (index > SAMPLE_SIZE)
+			return; //	Buffer is full -- someone didn't drain the sound data for this frame
 
-		//	We store the event
-		events_[head_index_++] = clock.get_cycles();
+		for (auto i     = last_sample_; i != index; i++)
+			samples_[i] = signal_;
 
-		//	Circular buffer
-		if (head_index_ >= EVENT_SIZE)
-			head_index_ = 0;
-
-		//	If we are overruning, get rid of the old samples
-		if (head_index_ == tail_index_)
-		{
-			tail_index_++;
-			if (tail_index_ >= EVENT_SIZE)
-				tail_index_ = 0;
-		}
+		last_sample_ = index;
+		signal_      = signal_ ^ 0x80;
 	}
 
-	/** Fills len byte in the buffer, consuming ticks */
-	void fill_buffer(byte* const buffer, const int len);
+	/** begin recording frame */
+	void begin_frame()
+	{
+		start_tick_  = clock_.get_cycles();
+		last_sample_ = 0;
+	}
+
+	/** end recording frame */
+	byte* end_frame()
+	{
+		for (auto i     = last_sample_; i != SAMPLE_SIZE; i++)
+			samples_[i] = signal_;
+
+		//		for (auto i=0;i!=SAMPLE_SIZE;i++)
+		//			samples_[i] = ((i%44)>22)*255;
+
+		return samples_;
+	}
 };
 
 #endif /* a2_speaker_hpp */

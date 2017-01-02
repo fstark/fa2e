@@ -11,7 +11,6 @@
       <in>a2_io_mem.cpp</in>
       <in>a2_io_mem.hpp</in>
       <in>a2_keyboard.hpp</in>
-      <in>a2_speaker.cpp</in>
       <in>a2_speaker.hpp</in>
       <in>a2_video.cpp</in>
       <in>a2_video.hpp</in>

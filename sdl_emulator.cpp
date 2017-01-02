@@ -57,10 +57,10 @@ sdl_emulator::sdl_emulator()
 	}
 	surface_ = SDL_GetWindowSurface(window_);
 
-//	floppy_drive& floppy = emulator_.get_disk().get_drive(0);
+	//	floppy_drive& floppy = emulator_.get_disk().get_drive(0);
 
-//	floppy_disk* disk1 = new raw_floppy_disk((const char*)sample_dsk, sample_dsk_len);
-//	floppy.insert(disk1);
+	//	floppy_disk* disk1 = new raw_floppy_disk((const char*)sample_dsk, sample_dsk_len);
+	//	floppy.insert(disk1);
 
 	//	floppy_disk *disk1 = new raw_floppy_disk( "/Users/fred/Development/F6502/Disks/Fred1.dsk" );
 	//	floppy_disk *disk1 = new raw_floppy_disk( "/Users/fred/Development/F6502/Disks/Aztec.dsk" );
@@ -97,8 +97,10 @@ bool sdl_emulator::runone()
 	//	The clock we want to get to
 	auto next_cycle_frame_ = clock::cycles_from_frames(frame_);
 
+	speaker_.begin_frame();
 	while (clock_.get_cycles() < next_cycle_frame_)
 		emulator_.exec();
+	speaker_.end_frame();
 
 //	We wait for the right "wall time"
 
@@ -106,40 +108,32 @@ bool sdl_emulator::runone()
 //		std::cout << "wating for frame " << ((frame_%clock::FRAME_RATE<clock::FRAME_RATE/2)?"I":"N") << " " << frame_ << " for " << std::chrono::duration_cast<std::chrono::milliseconds>(start_clock_+frame_duration_*frame_-std::chrono::high_resolution_clock::now()).count() << "ms"<< std::endl;
 #endif
 
-	using namespace std::chrono;
-	auto start_clock = high_resolution_clock::now();
-	
+	//	using namespace std::chrono;
+	//	auto start_clock = high_resolution_clock::now();
+
 	if (!skipframe_ || (frame_ % 30) == 0)
-		{
-			screen_.draw(surface_, clock::frames_from_cycles(clock_.get_cycles()));
-			SDL_UpdateWindowSurface(window_);
-		}
+	{
+		screen_.draw(surface_, clock::frames_from_cycles(clock_.get_cycles()));
+		SDL_UpdateWindowSurface(window_);
+	}
 
-		if (frame_==2)
-			speaker_.unpause();
+	SDL_Event e;
+	while (SDL_PollEvent(&e))
+	{
+		if (e.type == SDL_QUIT)
+			return false;
 
-		SDL_Event e;
-		while (SDL_PollEvent(&e))
-		{
-			if (e.type == SDL_QUIT)
-				return false;
+		if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_BACKSPACE && e.key.keysym.mod & KMOD_LCTRL)
+			emulator_.reset();
+		else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && e.key.keysym.mod & KMOD_LCTRL)
+			return false;
+		else if (e.type == SDL_KEYDOWN) //	SDL_KEYUP?
+			keyboard_.key_down(e);
+	}
 
-			if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_BACKSPACE && e.key.keysym.mod & KMOD_LCTRL)
-				emulator_.reset();
-			else if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE && e.key.keysym.mod & KMOD_LCTRL)
-				return false;
-			else if (e.type == SDL_KEYDOWN) //	SDL_KEYUP?
-				keyboard_.key_down(e);
-		}
-		
-	auto end_clock = high_resolution_clock::now();
-	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end_clock-start_clock).count();
+	//	auto end_clock = high_resolution_clock::now();
+	//	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end_clock-start_clock).count();
 
-	std::cout << ".";
-	if (ms>=1)
-		std::cout << ms << " ms ";
-	std::cout << std::flush;
-	
 	return true;
 }
 
@@ -147,6 +141,7 @@ bool sdl_emulator::runone()
 
 void sdl_emulator::run()
 {
+	speaker_.pause(false);
 	bool finished = false;
 	while (!finished)
 	{

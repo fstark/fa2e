@@ -22,18 +22,23 @@ class sdl_speaker
 	a2_speaker& speaker_;
 
 	SDL_AudioDeviceID device_;
+	int frame_delay_;
+	byte current_silence_;
 
 public:
 	sdl_speaker(a2_speaker& speaker, const std::string name = "spkr");
+	~sdl_speaker();
 
-	~sdl_speaker()
-	{
-		SDL_CloseAudioDevice(device_);
-	}
+	void pause(bool pause);
 
-	void unpause();
+	/** Needs to be called at the start of each frame */
+	void begin_frame();
 
-	friend void SDLCALL callback(void* userdata, Uint8* stream, int len);
+	/** Plays a silence for one frame */
+	void silent_frame(byte b = 0x80);
+
+	/** Needs to be called at the end of each frame -- will produce the sound */
+	void end_frame();
 };
 
 #endif /* speaker_hpp */

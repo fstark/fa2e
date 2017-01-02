@@ -5,7 +5,6 @@
       <in>a2_disk2.cpp</in>
       <in>a2_emulator.cpp</in>
       <in>a2_io_mem.cpp</in>
-      <in>a2_speaker.cpp</in>
       <in>a2_video.cpp</in>
       <in>binary_data.cpp</in>
       <in>clock.cpp</in>
@@ -66,10 +65,6 @@
         </ccTool>
       </item>
       <item path="a2_io_mem.cpp" ex="false" tool="1" flavor2="11">
-        <ccTool flags="0">
-        </ccTool>
-      </item>
-      <item path="a2_speaker.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -156,10 +151,6 @@
         </ccTool>
       </item>
       <item path="a2_io_mem.cpp" ex="false" tool="1" flavor2="11">
-        <ccTool flags="0">
-        </ccTool>
-      </item>
-      <item path="a2_speaker.cpp" ex="false" tool="1" flavor2="11">
         <ccTool flags="0">
         </ccTool>
       </item>
