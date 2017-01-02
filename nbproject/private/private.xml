@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <code-assistance-data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <code-model-enabled>true</code-model-enabled>
+    </code-assistance-data>
+    <data xmlns="http://www.netbeans.org/ns/make-project-private/1">
+        <activeConfTypeElem>0</activeConfTypeElem>
+        <activeConfIndexElem>1</activeConfIndexElem>
+    </data>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/fred/Development/fa2e/sdl_emulator.cpp</file>
+            <file>file:/home/fred/Development/fa2e/main.cpp</file>
+            <file>file:/home/fred/Development/fa2e/floppy_drive.hpp</file>
+            <file>file:/home/fred/Development/fa2e/sdl_speaker.cpp</file>
+            <file>file:/home/fred/Development/fa2e/sdl_emulator.hpp</file>
+            <file>file:/home/fred/Development/fa2e/floppy_drive.cpp</file>
+            <file>file:/home/fred/Development/fa2e/a2_speaker.cpp</file>
+        </group>
+    </open-files>
+</project-private>

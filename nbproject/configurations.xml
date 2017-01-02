@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="." name="0">
+      <in>a2_disk2.cpp</in>
+      <in>a2_emulator.cpp</in>
+      <in>a2_io_mem.cpp</in>
+      <in>a2_speaker.cpp</in>
+      <in>a2_video.cpp</in>
+      <in>binary_data.cpp</in>
+      <in>clock.cpp</in>
+      <in>commander.cpp</in>
+      <in>core_types.cpp</in>
+      <in>floppy_disk.cpp</in>
+      <in>floppy_drive.cpp</in>
+      <in>lib6502.c</in>
+      <in>main.cpp</in>
+      <in>sdl_emulator.cpp</in>
+      <in>sdl_keyboard.cpp</in>
+      <in>sdl_screen.cpp</in>
+      <in>sdl_speaker.cpp</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-std=c++14"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath>fa2</executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="a2_disk2.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_emulator.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_io_mem.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_speaker.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_video.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="binary_data.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="clock.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="commander.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="core_types.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="floppy_disk.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="floppy_drive.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="lib6502.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_emulator.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_keyboard.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_screen.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_speaker.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+    </conf>
+    <conf name="Fred" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-std=c++14"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath>fa2e</executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="a2_disk2.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_emulator.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_io_mem.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_speaker.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="a2_video.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="binary_data.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="clock.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="commander.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="core_types.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="floppy_disk.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="floppy_drive.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="lib6502.c" ex="false" tool="0" flavor2="2">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_emulator.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_keyboard.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_screen.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+      <item path="sdl_speaker.cpp" ex="false" tool="1" flavor2="11">
+        <ccTool flags="0">
+        </ccTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
