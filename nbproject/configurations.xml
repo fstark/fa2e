@@ -136,6 +136,12 @@
           <buildCommand>${MAKE} -f Makefile</buildCommand>
           <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
           <executablePath>fa2e</executablePath>
+          <ccTool>
+            <preprocessorList>
+              <Elem>VERBOSE</Elem>
+              <Elem>VERIFIER</Elem>
+            </preprocessorList>
+          </ccTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>

@@ -9,7 +9,7 @@ SRCS := a2_disk2.cpp a2_emulator.cpp a2_io_mem.cpp a2_video.cpp binary_data.cpp 
 HEADERS := a2_disk2.hpp a2_emulator.hpp a2_io_mem.hpp a2_keyboard.hpp a2_speaker.hpp a2_video.hpp binary_data.hpp bus.hpp chip.hpp clock.hpp commander.hpp core_types.hpp cpu_6502.hpp cpu_emulator.hpp floppy_disk.hpp floppy_drive.hpp sdl_emulator.hpp sdl_keyboard.hpp sdl_screen.hpp sdl_speaker.hpp
 BINARY := ./fa2e
 
-OBJS := $(subst .cpp,.o,$(SRCS))
+OBJS := $(subst .cpp,.o,$(SRCS)) lib6502.o
 
 all: $(BINARY)
 
@@ -29,6 +29,9 @@ build: $(BINARY)
 
 $(BINARY): $(OBJS)
 	$(CXX) $(LDFLAGS) -o $(BINARY) $(OBJS) $(LDLIBS) 
+
+lib6502.o: lib6502.c
+	$(CC) -c lib6502.c -o lib6502.o
 
 format: $(SRCS) $(HEADERS)
 	clang-format -i $(SRCS) $(HEADERS)

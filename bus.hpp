@@ -10,6 +10,7 @@
 #define memory_hpp
 
 #include "chip.hpp"
+#include <cstring>
 #include <iostream>
 #include <vector>
 

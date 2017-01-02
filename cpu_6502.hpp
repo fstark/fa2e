@@ -1267,7 +1267,7 @@ public:
 		commander::cli.register_variable(name, bool_variable("verbose", verbose));
 #endif
 #ifdef VERIFIER
-		cli.register_variable(name, bool_variable("verifier", verifier));
+		commander::cli.register_variable(name, bool_variable("verifier", verifier));
 #endif
 
 		reset();
@@ -1389,7 +1389,7 @@ public:
 					error = true;
 				}
 
-				error = memory_.verify();
+				error = error || memory_.verify();
 			}
 
 			if (error)

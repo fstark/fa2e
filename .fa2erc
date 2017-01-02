@@ -1,3 +1,6 @@
+cpu.verbose = false
+cpu.verifier = false
+
 # F1 == Command line
 kbd.fkey 0 repl
 
@@ -18,7 +21,7 @@ kbd.fkey 5 toggle emulator.skipframe
 kbd.fkey 6 toggle cpu.verbose
 
 # F8 == Make CPU verify instruction execution against reference implementation (needs special compilation flags)
-kbd.fkey 7 toggle cpu.verify
+kbd.fkey 7 toggle cpu.verifier
 
 # F9 == Insert Dark Crystal drives
 kbd.fkey 8 drive.insert 0 raw disks/DC1A.dsk

@@ -10,7 +10,7 @@
 #include <iostream>
 
 #ifdef VERBOSE
-bool verbose = false;
+bool verbose = true;
 #endif
 
 #ifdef VERIFIER

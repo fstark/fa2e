@@ -16,7 +16,7 @@
  The verbose global variable will also have to be set to true for verbosity to kick in
  The SDL emulator maps verbosity to the F
  */
-#define VERBOSE
+#define noVERBOSE
 #ifdef VERBOSE
 extern bool verbose;
 #endif
