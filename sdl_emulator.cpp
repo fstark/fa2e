@@ -146,13 +146,15 @@ void sdl_emulator::run()
 	while (!finished)
 	{
 		finished = !runone();
-		if (!nosleep_)
-			std::this_thread::sleep_until(start_clock_ + frame_duration_ * frame_);
-		else
+		auto next_frame = start_clock_ + frame_duration_ * frame_;
+		auto wait_time = std::chrono::duration_cast<std::chrono::milliseconds>( next_frame - std::chrono::high_resolution_clock::now() );
+
+		if (nosleep_ || wait_time.count()<-50)
 		{
 			//	We pretend that we started earlier, so we don't wait back if we go back on sleep mode
-			using namespace std::chrono;
-			start_clock_ -= std::chrono::duration_cast<std::chrono::milliseconds>(start_clock_ + frame_duration_ * frame_ - high_resolution_clock::now());
+			start_clock_ -= wait_time;
 		}
+		else
+			std::this_thread::sleep_until( next_frame );
 	}
 }
