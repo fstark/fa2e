@@ -3,7 +3,7 @@
 //  FAE_SDL
 //
 //  Created by Frederic Stark on 08/05/16.
-//  Copyright © 2016 Fred. All rights reserved.
+//  Copyright (c) 2016 Fred. All rights reserved.
 //
 
 #include "floppy_drive.hpp"

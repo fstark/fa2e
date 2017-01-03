@@ -43,7 +43,7 @@ depend: .depend
 	$(CXX) $(CPPFLAGS) -MM $^>>./.depend;
 
 clean:
-	$(RM) $(OBJS) $(BINARY)
+	$(RM) $(OBJS) $(BINARY) fa2e.html fa2e.html.mem fa2e.js
 
 distclean: clean
 	$(RM) *~

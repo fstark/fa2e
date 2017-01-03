@@ -37,11 +37,12 @@ Each layer is only dependant on the ones before.
 All the layers are bound together with an internal command-line interface that let access the emulator while running. By default, pressing F1 will drop into that command line.
 
 TODO:
-	gif demo in github
-	emscirptem demo in github
-	OSX back-port ?
-	Windows port ?
-	iOS port ?
-	latch object ?
-	clean-up cpu_6502 ?
-	JIT ?
+-	gif demo in github
+-	emscriptem demo in github
+-	Fix command-line mess
+-	OSX back-port ?
+-	Windows port ?
+-	iOS port ?
+-	latch object ?
+-	clean-up cpu_6502 ?
+-	JIT ?
