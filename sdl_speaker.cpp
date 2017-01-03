@@ -72,13 +72,13 @@ void sdl_speaker::end_frame()
 	//	We try to maintain at most frame_delay_ frames of sound in the buffer (ie: the audio lags 1 to frame_delay_ frames behind)
 	if (s < a2_speaker::SAMPLE_SIZE / 4)
 	{
-//		std::cout << "AUDIO : inserting a silent frame" << std::endl;
+		//		std::cout << "AUDIO : inserting a silent frame" << std::endl;
 		silent_frame(current_silence_);
 	}
 
 	if (s > a2_speaker::SAMPLE_SIZE * frame_delay_)
 	{
-//		std::cout << "AUDIO QUEUE is " << s << " bytes, skipping" << std::endl;
+		//		std::cout << "AUDIO QUEUE is " << s << " bytes, skipping" << std::endl;
 		return;
 	}
 

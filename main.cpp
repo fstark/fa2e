@@ -16,11 +16,11 @@
 #include <fstream>
 #include <iostream>
 
-sdl_emulator* emulator;
+sdl_emulator* em_emulator;
 
 void one_iter()
 {
-	emulator->runone();
+	em_emulator->runone();
 }
 
 /*
@@ -41,7 +41,8 @@ int main(int argc, const char* argv[])
 	sdl_emulator emulator{};
 
 #ifdef __EMSCRIPTEN__
-	emscripten_set_main_loop(one_iter, 60, 1);
+	em_emulator = &emulator;
+	emscripten_set_main_loop(one_iter, 0, 1);
 #else
 	std::cerr << "Use Control-ESC to quit emulator" << std::endl;
 	std::cerr << "Use Control-Delete to send RESET to the emulator" << std::endl;

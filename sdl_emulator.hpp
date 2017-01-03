@@ -9,11 +9,11 @@
 #ifndef sdl_emulator_hpp
 #define sdl_emulator_hpp
 
-#include <SDL2/SDL.h>
 #include "a2_emulator.hpp"
 #include "sdl_keyboard.hpp"
 #include "sdl_screen.hpp"
 #include "sdl_speaker.hpp"
+#include <SDL2/SDL.h>
 #include <chrono>
 
 /**
