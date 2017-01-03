@@ -42,7 +42,9 @@ int main(int argc, const char* argv[])
 
 #ifdef __EMSCRIPTEN__
 	em_emulator = &emulator;
+	commander::cli.execute("kbd.fkey 0 repl");
 	emscripten_set_main_loop(one_iter, 0, 1);
+
 #else
 	std::cerr << "Use Control-ESC to quit emulator" << std::endl;
 	std::cerr << "Use Control-Delete to send RESET to the emulator" << std::endl;

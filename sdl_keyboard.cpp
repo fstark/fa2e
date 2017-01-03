@@ -159,7 +159,9 @@ void sdl_keyboard::key_down(const SDL_Event& event)
 	else
 	{
 		if (SDLK_F1 <= event.key.keysym.sym && event.key.keysym.sym <= SDLK_F12)
+		{
 			f_[event.key.keysym.sym - SDLK_F1]();
+		}
 #ifdef VERBOSE
 //		else
 //			std::cerr << event.key.keysym.sym << "(" << event.key.keysym.scancode << ") mod " << event.key.keysym.mod << " => INVALID" << std::endl;
