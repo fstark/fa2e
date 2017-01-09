@@ -4,6 +4,22 @@
     <df root="." name="0">
       <df name="disks">
       </df>
+      <df name="fa2e.xcodeproj">
+        <df name="project.xcworkspace">
+          <df name="xcuserdata">
+            <df name="fred.xcuserdatad">
+            </df>
+          </df>
+        </df>
+        <df name="xcuserdata">
+          <df name="fred.xcuserdatad">
+            <df name="xcdebugger">
+            </df>
+            <df name="xcschemes">
+            </df>
+          </df>
+        </df>
+      </df>
       <in>a2_disk2.cpp</in>
       <in>a2_disk2.hpp</in>
       <in>a2_emulator.cpp</in>
@@ -115,8 +131,6 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
-        <gdb_signals>
-        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>

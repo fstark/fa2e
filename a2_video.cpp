@@ -205,9 +205,9 @@ static void hires_scan_cpy(byte* const dst, const byte* const src)
 		{
 			const auto new_color = ((b & 0x1) << 1) | ((i & 0x1) ^ (x & 0x1)) | type;
 
-			*q++ = mix(red[last_color], red[new_color]);
-			*q++ = mix(green[last_color], green[new_color]);
 			*q++ = mix(blue[last_color], blue[new_color]);
+			*q++ = mix(green[last_color], green[new_color]);
+			*q++ = mix(red[last_color], red[new_color]);
 			*q++ = 0xff;
 
 			last_color = new_color;

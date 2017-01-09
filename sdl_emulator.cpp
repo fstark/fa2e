@@ -49,16 +49,12 @@ sdl_emulator::sdl_emulator()
 	SDL_LogSetPriority(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO);
 
 	/* Create window and renderer for given surface */
-	window_ = SDL_CreateWindow("-- FEA --", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+	window_ = SDL_CreateWindow("-- FEA --", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE );
 	if (!window_)
 	{
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window creation fail : %s\n", SDL_GetError());
 		throw "Window creation failed -- abort";
 	}
-#ifndef TEXTURE
-	surface_ = SDL_GetWindowSurface(window_);
-	assert( surface_ );
-#else
 	renderer_ = SDL_CreateRenderer(window_, -1, 0);
 	if (!renderer_)
 	{
@@ -67,8 +63,7 @@ sdl_emulator::sdl_emulator()
 	}
 
 	texture_ = SDL_CreateTexture(renderer_, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, a2_video::HGRW, a2_video::HGRH);
-	assert( texture_ );
-#endif
+	assert(texture_);
 
 	//	floppy_drive& floppy = emulator_.get_disk().get_drive(0);
 
@@ -126,15 +121,10 @@ bool sdl_emulator::runone()
 
 	if (!skipframe_ || (frame_ % 30) == 0)
 	{
-#ifndef TEXTURE
-		screen_.draw(surface_, clock::frames_from_cycles(clock_.get_cycles()));
-		SDL_UpdateWindowSurface(window_);
-#else
 		screen_.draw(texture_, clock::frames_from_cycles(clock_.get_cycles()));
-//		SDL_RenderClear(renderer_);
+		SDL_RenderClear(renderer_);
 		SDL_RenderCopy(renderer_, texture_, NULL, NULL);
 		SDL_RenderPresent(renderer_);
-#endif
 	}
 
 	SDL_Event e;
@@ -162,9 +152,9 @@ bool sdl_emulator::runone()
 void sdl_emulator::run()
 {
 	speaker_.pause(false);
-	bool finished = false;
+	bool finished  = false;
 	auto start_fps = std::chrono::high_resolution_clock::now();
-	int count_fps = 0;
+	int count_fps  = 0;
 
 	while (!finished)
 	{
@@ -182,12 +172,12 @@ void sdl_emulator::run()
 
 		//	Count FPS
 		count_fps++;
-		auto now = std::chrono::high_resolution_clock::now();
-		auto time_fps  = std::chrono::duration_cast<std::chrono::milliseconds>(now-start_fps);
-		if (time_fps.count()>=1000)
+		auto now      = std::chrono::high_resolution_clock::now();
+		auto time_fps = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_fps);
+		if (time_fps.count() >= 1000)
 		{
 			std::cout << count_fps << " fps " << std::flush;
-			
+
 			count_fps = 0;
 			start_fps = now;
 		}

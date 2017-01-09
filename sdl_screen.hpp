@@ -11,15 +11,11 @@
 
 #include "a2_video.hpp"
 
-#ifndef TEXTURE
-struct SDL_Surface;
-#else
 struct SDL_Texture;
-#endif
 
 struct GifWriter;
 
-#define SCALE 2
+#define SCALE 4
 
 #define WIDTH (40 * 7 * SCALE)
 #define HEIGHT (24 * 8 * SCALE)
@@ -59,11 +55,7 @@ public:
 
 	///	Will draw the content video buffer
 	///	frame is used to control text flashing
-#ifndef TEXTURE
-	void draw(SDL_Surface* surface, const long frame);
-#else
 	void draw(SDL_Texture* texture, const long frame);
-#endif
 };
 
 #endif /* hires_screen_hpp */

@@ -7,8 +7,8 @@
 //
 
 #include "sdl_keyboard.hpp"
-#include <SDL2/SDL.h>
 #include "commander.hpp"
+#include <SDL2/SDL.h>
 #include <algorithm>
 #include <iostream>
 

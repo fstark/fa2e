@@ -27,12 +27,8 @@ class sdl_emulator
 	sdl_screen screen_;
 
 	SDL_Window* window_;
-#ifndef TEXTURE
-		SDL_Surface* surface_;
-#else
 	SDL_Renderer* renderer_;
-	SDL_Texture * texture_;
-#endif
+	SDL_Texture* texture_;
 
 	class clock& clock_;
 

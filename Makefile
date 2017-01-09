@@ -1,11 +1,9 @@
 CXX=g++
 RM=rm -f
-#CPPFLAGS=-g --std=c++14 -Wall -Wno-unknown-pragmas  -Werror -F/Library/Frameworks -DTEXTURE
-CPPFLAGS=-O3 --std=c++14 -Wall -Wno-unknown-pragmas  -Werror -F/Library/Frameworks -DTEXTURE
-#LDFLAGS=-g -F/Library/Frameworks
-LDFLAGS=-O3 -F/Library/Frameworks
-#LDLIBS=-lSDL2
-LDLIBS=-framework SDL2
+CPPFLAGS=--std=c++14 -Wall -Wno-unknown-pragmas  -Werror -F/Library/Frameworks
+LDFLAGS=-F/Library/Frameworks
+LDLIBS=-lSDL2
+#LDLIBS=-framework SDL2
 
 # Be *extra* careful when adding source files which don't have .cpp extension, as they would be *deleted* by make clean !
 SRCS := a2_disk2.cpp a2_emulator.cpp a2_io_mem.cpp a2_video.cpp binary_data.cpp clock.cpp commander.cpp core_types.cpp floppy_disk.cpp floppy_drive.cpp main.cpp sdl_emulator.cpp sdl_keyboard.cpp sdl_screen.cpp sdl_speaker.cpp
@@ -25,10 +23,16 @@ help:
 	@echo "             (should be run after each include modification)"
 	@echo " distclean : clean and removes all extra files not part of the distribution"
 	@echo " format    : reformat all the sources according to fa2e coding standards"
-	@echo "          (needs clang-format installed)
+	@echo "             (needs clang-format installed)"
 	@echo " valgrind  : compiles a valgrind-enabled version and run it"
 
 build: $(BINARY)
+
+release:	CPPFLAGS += -O3
+release:	build
+
+debug:		CPPFLAGS += -g
+debug:		build
 
 $(BINARY): $(OBJS)
 	$(CXX) $(LDFLAGS) -o $(BINARY) $(OBJS) $(LDLIBS) 
@@ -56,6 +60,7 @@ valgrind: CPPFLAGS += -DVALGRIND
 valgrind: build
 	valgrind --leak-check=full $(BINARY)
 
+html:		fa2e.html
 fa2e.html:	CXX=emcc
 fa2e.html:	CPPFLAGS=-std=c++11 -O3 -s USE_SDL=2
 
