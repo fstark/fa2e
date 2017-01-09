@@ -1,3 +1,6 @@
+xcode-select --install
+
+
 An AppleII+ emulator in C++14
 ===================
 

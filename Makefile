@@ -1,8 +1,11 @@
 CXX=g++
 RM=rm -f
-CPPFLAGS=-g --std=c++14 -Wall -Wno-unknown-pragmas -Werror
-LDFLAGS=-g
-LDLIBS=-lSDL2
+#CPPFLAGS=-g --std=c++14 -Wall -Wno-unknown-pragmas  -Werror -F/Library/Frameworks -DTEXTURE
+CPPFLAGS=-O3 --std=c++14 -Wall -Wno-unknown-pragmas  -Werror -F/Library/Frameworks -DTEXTURE
+#LDFLAGS=-g -F/Library/Frameworks
+LDFLAGS=-O3 -F/Library/Frameworks
+#LDLIBS=-lSDL2
+LDLIBS=-framework SDL2
 
 # Be *extra* careful when adding source files which don't have .cpp extension, as they would be *deleted* by make clean !
 SRCS := a2_disk2.cpp a2_emulator.cpp a2_io_mem.cpp a2_video.cpp binary_data.cpp clock.cpp commander.cpp core_types.cpp floppy_disk.cpp floppy_drive.cpp main.cpp sdl_emulator.cpp sdl_keyboard.cpp sdl_screen.cpp sdl_speaker.cpp

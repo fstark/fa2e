@@ -11,7 +11,11 @@
 
 #include "a2_video.hpp"
 
+#ifndef TEXTURE
 struct SDL_Surface;
+#else
+struct SDL_Texture;
+#endif
 
 struct GifWriter;
 
@@ -53,9 +57,13 @@ public:
 	///	Stop generating gif
 	void end_gif();
 
-	///	Will draw the content vide buffer in the surface
+	///	Will draw the content video buffer
 	///	frame is used to control text flashing
+#ifndef TEXTURE
 	void draw(SDL_Surface* surface, const long frame);
+#else
+	void draw(SDL_Texture* texture, const long frame);
+#endif
 };
 
 #endif /* hires_screen_hpp */

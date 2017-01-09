@@ -7,7 +7,7 @@
 //
 
 #include "sdl_screen.hpp"
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 #include "clock.hpp"
 #include "gif.h"
 
@@ -32,12 +32,17 @@ void sdl_screen::end_gif()
 	}
 }
 
+#ifndef TEXTURE
 void sdl_screen::draw(SDL_Surface* surface, const long frame)
+#else
+void sdl_screen::draw(SDL_Texture* texture, const long frame)
+#endif
 {
 	//	grab screen
 	byte image[a2_video::HGRW * a2_video::HGRH * 4];
 	video_.draw(image, frame);
-
+	
+#ifndef TEXTURE
 	//	copy to SDL
 	if (surface)
 	{
@@ -57,6 +62,9 @@ void sdl_screen::draw(SDL_Surface* surface, const long frame)
 			}
 		}
 	}
+#else
+	SDL_UpdateTexture(texture, NULL, image, a2_video::HGRW * 4);
+#endif
 
 	if (gif_writer_)
 		GifWriteFrame(gif_writer_, image, a2_video::HGRW, a2_video::HGRH, 0);

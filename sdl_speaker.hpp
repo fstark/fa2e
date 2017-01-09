@@ -10,7 +10,7 @@
 #define speaker_hpp
 
 //	#### Needed for emscripten (weird)
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 #include "a2_speaker.hpp"
 #include <sys/types.h>
 
