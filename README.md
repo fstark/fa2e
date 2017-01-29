@@ -1,6 +1,3 @@
-xcode-select --install
-
-
 An AppleII+ emulator in C++14
 ===================
 
@@ -39,11 +36,24 @@ Each layer is only dependant on the ones before.
 
 All the layers are bound together with an internal command-line interface that let access the emulator while running. By default, pressing F1 will drop into that command line.
 
+Build:
+	mkdir build
+	cd build
+	cmake ..
+	make
+
+	or
+
+	make clang-format
+	make clang-tidy
+
 TODO:
+
 -	gif demo in github
 -	emscriptem demo in github
 -	Fix command-line mess
 -	OSX back-port ?
+		xcode-select --install
 -	Windows port ?
 -	iOS port ?
 -	latch object ?
