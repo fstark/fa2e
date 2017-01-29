@@ -13,7 +13,7 @@
 #include "sdl_keyboard.hpp"
 #include "sdl_screen.hpp"
 #include "sdl_speaker.hpp"
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <chrono>
 
 /**

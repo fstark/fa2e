@@ -29,6 +29,8 @@ void one_iter()
  --f3 verbose
 */
 
+#undef main
+
 int main(int argc, const char* argv[])
 {
 	/* Initialize SDL */

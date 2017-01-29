@@ -271,7 +271,7 @@ class cpu_6502
 		std::string desc() const { return "$" + to_hex2(adrs) + ",X"; }
 	};
 
-#pragma mark ACCESSOR : DIRECT PAGE INDEXED INDIRECT, X ###
+#pragma mark ACCESSOR : DIRECT PAGE INDEXED INDIRECT, X
 	//	mem[X+$immediate8]
 	class a_dp_ix_ind_x
 	{

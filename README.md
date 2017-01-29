@@ -47,6 +47,18 @@ Build:
 	make clang-format
 	make clang-tidy
 
+
+Windows:
+	install visual studio
+	install sdl2 (https://www.libsdl.org/download-2.0.php)
+	install cmake (https://cmake.org/download/)
+
+	git clone https://github.com/fstark/fa2e.git
+	cd fa2e
+	mkdir build
+	cd build
+
+
 TODO:
 
 -	gif demo in github

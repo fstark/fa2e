@@ -61,7 +61,7 @@ struct word
 	}
 
 	operator int() const { return h * 0x100 + l; }
-	word operator+(int v) const { return ((int)(*this)) + v; }
+//	word operator+(int v) const { return ((int)(*this)) + v; }
 };
 
 /** Convenience method to format a 2 digits hex */

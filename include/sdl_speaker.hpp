@@ -11,7 +11,7 @@
 
 //	#### Needed for emscripten (weird)
 #include "a2_speaker.hpp"
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <sys/types.h>
 
 /**

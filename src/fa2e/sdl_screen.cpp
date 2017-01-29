@@ -9,7 +9,7 @@
 #include "sdl_screen.hpp"
 #include "clock.hpp"
 #include "gif.h"
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 sdl_screen::~sdl_screen()
 {
