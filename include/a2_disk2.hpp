@@ -18,9 +18,6 @@
  */
 class a2_disk2
 {
-	static void phase_change_null_callback(void*, int);
-	static byte read_byte_null_callback(void*);
-
 	//	Bitpattern of values are actually important
 	typedef enum {
 		kRead              = 0x0,
@@ -28,6 +25,9 @@ class a2_disk2
 		kWrite             = 0x2,
 		kWriteLoad         = 0x3
 	} eMode;
+    /// Debug
+    static std::string string_from_mode(const eMode mode);
+    friend std::string string_from_mode(const eMode mode);
 
 	eMode mode_;
 	int phase_;
@@ -36,7 +36,7 @@ class a2_disk2
 	floppy_drive drives_[2];
 
 public:
-	a2_disk2(class clock& clock, const std::string name = "disk2")
+	explicit a2_disk2(class clock& clock, const std::string name = "disk2")
 	    : mode_(kRead)
 	    , phase_(0)
 	    , drive_(0)
@@ -47,21 +47,6 @@ public:
 		commander::cli.register_variable(name, { "drive_", [&]() { return std::to_string(drive_); } });
 		commander::cli.register_variable(name, bool_variable("motor", motor_));
 		commander::cli.register_variable(name, int_variable("phase", phase_));
-	}
-
-	std::string to_string(const eMode mode) const
-	{
-		switch (mode)
-		{
-			case kRead:
-				return "READ";
-			case kSenseWriteProtect:
-				return "SENSE WRITE PROTECT";
-			case kWrite:
-				return "WRITE";
-			case kWriteLoad:
-				return "WRITE LOAD";
-		}
 	}
 
 	///	Read a byte from the I/O range low byte

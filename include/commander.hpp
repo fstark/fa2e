@@ -16,6 +16,9 @@
 #include <string>
 #include <vector>
 
+/**
+ * Represent a variable for the cli, with a couple of functions to get and set values
+ */
 struct variable
 {
 	std::string name;
@@ -31,6 +34,9 @@ struct command
 #include <map>
 #include <vector>
 
+/**
+ * The si,mple command line interface
+ */
 class commander
 {
 	std::map<const std::string, variable> variables_;

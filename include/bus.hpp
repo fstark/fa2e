@@ -17,9 +17,10 @@
 class cpu_6502;
 
 /**
- This class handles read/write requests from the CPU (16 bits)
- Address space is divided in 256 pages, which each map to a chip.
- Note: the chip is passed the real address, so needs a way to know where it is mapped in memory. That may change in the future depending on needs in mapping/remapping of memory (passing a chip-relative address).
+ * This class handles read/write requests from the CPU (16 bits)
+ * Address space is divided in 256 pages, which each map to a chip.
+ * Note: the chip is passed the real address, so needs a way to know where it is mapped in memory.
+ * That may change in the future depending on needs in mapping/remapping of memory (passing a chip-relative address).
  */
 class bus
 {

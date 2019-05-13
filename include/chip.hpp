@@ -11,9 +11,11 @@
 
 #include "core_types.hpp"
 #include <assert.h>
+#include <memory.h>
 
 /**
- Chips can me plugged into a bus, and read or write bytes from an address
+ * Chips are an abstraction that can be read from and written to
+ * They have a size, and optionally may expose their underlying memory
  */
 class chip
 {
@@ -44,7 +46,7 @@ protected:
 	int offset(const int adrs) const { return (adrs - base_) % SIZE; }
 
 public:
-	mem_chip(const int adrs = 0)
+	explicit mem_chip(const int adrs = 0)
 	    : base_(adrs)
 	{
 	}
@@ -65,8 +67,7 @@ public:
 	ram(const int adrs = 0)
 	    : mem_chip<SIZE>(adrs)
 	{
-		for (int i                   = 0; i != SIZE; i++)
-			mem_chip<SIZE>::data_[i] = 0x00;
+        ::memset( mem_chip<SIZE>::data_, SIZE, 0x00 );
 	}
 
 	void write_byte(const int adrs, const byte value)
@@ -89,8 +90,7 @@ public:
 	{
 		assert(p);
 
-		for (int i                   = 0; i != SIZE; i++)
-			mem_chip<SIZE>::data_[i] = *p++;
+        ::memcpy( mem_chip<SIZE>::data_, p, SIZE );
 	}
 };
 

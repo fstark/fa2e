@@ -41,8 +41,8 @@ extern bool verifier;
 typedef uint8_t byte;
 
 /** A word is composed of two half-bytes.
- This class simplifies the hanlding of half-words by being explicit in access
- It can be freely cast to/from int, and implement an increment operator
+ This class simplifies the handling of half-words by being explicit in access
+ It can be freely cast to/from int
  */
 struct word
 {
@@ -61,7 +61,6 @@ struct word
 	}
 
 	operator int() const { return h * 0x100 + l; }
-//	word operator+(int v) const { return ((int)(*this)) + v; }
 };
 
 /** Convenience method to format a 2 digits hex */

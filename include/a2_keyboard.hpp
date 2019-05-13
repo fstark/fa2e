@@ -22,7 +22,7 @@ class a2_keyboard
 	byte key_latch_;
 
 public:
-	a2_keyboard(const std::string name = "kbd")
+	explicit a2_keyboard(const std::string name = "kbd")
 	    : key_strobe_(false)
 	    , key_latch_(0x00)
 	{

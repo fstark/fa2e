@@ -59,12 +59,14 @@ static const byte apple2font_bits[] = {
 	0x22, 0x00, 0x02, 0x00, 0x1C, 0x7F, 0x00, 0x08,
 };
 
-typedef enum { kNormal,
+typedef enum
+{   kNormal,
 	kInverted,
-	kFlashing } eStyle;
+	kFlashing
+} eStyle;
 
 //	Copies one scan line of text
-static void text_scan_cpy(byte* const dest, const byte* const src, const int char_offset, const long frame)
+static void text_scan_cpy(byte* const dest, const byte* const src, const int char_offset, const bool inverted)
 {
 	auto p      = src;
 	uint32_t* q = (uint32_t*)dest;
@@ -88,14 +90,7 @@ static void text_scan_cpy(byte* const dest, const byte* const src, const int cha
 
 		if (style == kFlashing)
 		{
-			if (frame % 50 < 25)
-			{
-				style = kInverted;
-			}
-			else
-			{
-				style = kNormal;
-			}
+            style = inverted?kInverted:kNormal;
 		}
 
 		c &= 0x3f;
@@ -231,7 +226,7 @@ void a2_video::draw(byte* const image, const long frame)
 
 	if (is_text())
 		for (int y = 0; y != HGRMH; y++, p += HGRW * 4)
-			text_scan_cpy(p, text + text_offset(y / 8), y & 0x7, frame);
+			text_scan_cpy(p, text + text_offset(y / 8), y & 0x7, (frame % 50 < 25));
 	else if (is_hires())
 		for (int y = 0; y != HGRMH; y++, p += HGRW * 4)
 			hires_scan_cpy(p, hires + hires_offset(y));
@@ -241,7 +236,7 @@ void a2_video::draw(byte* const image, const long frame)
 
 	if (is_text() || is_mixed())
 		for (int y = HGRMH; y != HGRH; y++, p += HGRW * 4)
-			text_scan_cpy(p, text + text_offset(y / 8), y & 0x7, frame);
+			text_scan_cpy(p, text + text_offset(y / 8), y & 0x7, (frame % 50 < 25));
 	else if (is_hires())
 		for (int y = HGRMH; y != HGRH; y++, p += HGRW * 4)
 			hires_scan_cpy(p, hires + hires_offset(y));

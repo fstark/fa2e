@@ -21,7 +21,7 @@ class clock
 	long cycles_;
 
 public:
-	clock(const std::string name = "clock")
+	explicit clock(const std::string name = "clock")
 	    : cycles_(0)
 	{
 		commander::cli.register_variable(name, long_variable("cycles", cycles_));

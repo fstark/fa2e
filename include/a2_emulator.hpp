@@ -33,7 +33,7 @@ class a2_emulator
 	rom<0x100> disk2_rom_;
 
 public:
-	a2_emulator(); //	#### I THINK IT NEEDS TO BE PASSED THE ROM CHIPS
+	explicit a2_emulator(); //	#### I THINK IT NEEDS TO BE PASSED THE ROM CHIPS
 
 	void reset() { cpu_emulator_.get_cpu().reset(); }
 	void exec() { cpu_emulator_.get_cpu().exec(); }

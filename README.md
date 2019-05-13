@@ -59,6 +59,22 @@ Windows:
 	cd build
 
 
+Debug:
+    mkdir debug
+    cd debug
+    cmake -DCMAKE_BUILD_TYPE=Debug ..
+    make
+
+Using:
+    build/fa2e
+    ctrl-ESC => quit
+    [F1] => console
+    [F9] => Inserts first disk of Dark Crystal
+    [F10] => Inserts first disk of Dark Crystal
+    [F12] => Execute solution
+
+    Use ctrl-Delete to break in basic
+
 TODO:
 
 -	gif demo in github

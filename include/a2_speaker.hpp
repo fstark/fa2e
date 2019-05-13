@@ -36,7 +36,7 @@ private:
 	size_t sample_from_tick(long tick) { return ((tick - start_tick_) * SAMPLE_SIZE) / clock::CYCLES_PER_FRAME; }
 
 public:
-	a2_speaker(class clock& clock, const std::string name = "spkr")
+	explicit a2_speaker(class clock& clock, const std::string name = "spkr")
 	    : clock_(clock)
 	    , signal_(0x00)
 	    , start_tick_(0)

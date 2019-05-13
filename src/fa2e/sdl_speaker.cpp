@@ -46,7 +46,7 @@ sdl_speaker::sdl_speaker(a2_speaker& speaker, const std::string name)
 
 	//	std::cout << "SILENCE = " << (int)obtained.silence << std::endl;
 
-	commander::cli.register_variable(name, { "device", [=]() { return device_name; } });
+	commander::cli.register_variable(name, { "device", [=]() { return device_name?device_name:"(null)"; } });
 	commander::cli.register_variable(name, int_variable("frame_delay", frame_delay_));
 }
 

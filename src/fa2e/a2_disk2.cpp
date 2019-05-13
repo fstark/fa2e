@@ -11,6 +11,23 @@
 #include <assert.h>
 #include <iostream>
 
+std::string string_from_mode(const a2_disk2::eMode mode)
+{
+    switch (mode)
+    {
+        case a2_disk2::kRead:
+            return "READ";
+        case a2_disk2::kSenseWriteProtect:
+            return "SENSE WRITE PROTECT";
+        case a2_disk2::kWrite:
+            return "WRITE";
+        case a2_disk2::kWriteLoad:
+            return "WRITE LOAD";
+    }
+}
+
+
+
 byte a2_disk2::read_byte(const int adrs)
 {
 	assert(adrs >= 0 && adrs <= 0xf);
@@ -77,23 +94,23 @@ byte a2_disk2::read_byte(const int adrs)
 			break;
 		case 0xc:
 			mode_ = (eMode)(mode_ & 0x2);
-			//				std::cout << "  IODISK Q6L MODE " << to_string(mode) << std::endl;
+			//				std::cout << "  IODISK Q6L MODE " << string_from_mode(mode) << std::endl;
 			if (mode_ == kRead)
 				return drives_[drive_].read();
 			break;
 		case 0xd:
 			mode_ = (eMode)(mode_ | 0x2);
-			//			std::cout << "  IODISK Q6H MODE " << to_string(mode) << std::endl;
+			//			std::cout << "  IODISK Q6H MODE " << to_ststring_from_modering(mode) << std::endl;
 			break;
 		case 0xe:
 			mode_ = (eMode)(mode_ & 0x1);
-			//			std::cout << "  IODISK Q7L MODE " << to_string(mode) << std::endl;
+			//			std::cout << "  IODISK Q7L MODE " << string_from_mode(mode) << std::endl;
 			if (mode_ == kSenseWriteProtect)
 				return 0x80;
 			break;
 		case 0xf:
 			mode_ = (eMode)(mode_ | 0x1);
-			//			std::cout << "  IODISK Q7H MODE " << to_string(mode) << std::endl;
+			//			std::cout << "  IODISK Q7H MODE " << string_from_mode(mode) << std::endl;
 			break;
 		default:;
 	}
